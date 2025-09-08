@@ -1,0 +1,30 @@
+[
+    {
+        "name": "UnityExplorer",
+        "author": "sinai-dev",
+        "version": "4.9.0",
+        "file": "UnityExplorer.BepInEx5.Mono.zip",
+        "extractTo": "BepInEx",
+        "toDelete": "sinai-dev-UnityExplorer"
+    },
+    {
+        "name": "BenchwarpSS",
+        "author": "GamingInfinite",
+        "version": "1.0.1",
+        "file": "BenchwarpSS.dll"
+    },
+    {
+        "name": "SilklessCoop",
+        "author": "nek5s",
+        "version": "V1.0",
+        "file": "SilklessCoop.dll"
+    },
+    {
+        "name": "Silksong-FreeCompass",
+        "author": "x753",
+        "version": "1.0.0",
+        "file": "x753-FreeCompass-1.0.0.zip",
+        "extractTo": "BepInEx\\plugins",
+        "toDelete": "FreeCompass.dll"
+    }
+]
