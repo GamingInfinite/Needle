@@ -120,17 +120,11 @@
     }
 
     async function launchModdedGame() {
-        if (!(await exists(`${ssbp}winhttp.dll`))) {
-            await invoke("toggle_bepin", { path: `${ssbp}winhttp.dll` });
-        }
-        invoke("open_game", { path: config.ss_path });
+        invoke("open_game", { path: config.ss_path, args: [] });
     }
 
     async function launchVanillaGame() {
-        if (!(await exists(`${ssbp}winhttp.disabled`))) {
-            await invoke("toggle_bepin", { path: `${ssbp}winhttp.dll` });
-        }
-        await invoke("open_game", { path: config.ss_path });
+        invoke("open_game", { path: config.ss_path, args:["--doorstop-enabled", "false"] });
     }
 
     onMount(async () => {

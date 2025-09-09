@@ -26,5 +26,13 @@
         "file": "x753-FreeCompass-1.0.0.zip",
         "extractTo": "BepInEx\\plugins",
         "toDelete": "FreeCompass.dll"
+    },
+    {
+        "name": "Silksong_Skipintro",
+        "author": "Bigfootmech",
+        "version": "release",
+        "file": "silksong_skip_intro.zip",
+        "extractTo": "BepInEx\\plugins",
+        "toDelete": "skip_intro.dll"
     }
 ]

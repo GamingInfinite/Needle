@@ -132,40 +132,20 @@ async fn delete_mod(path: String) -> Result<(), String> {
 }
 
 #[tauri::command]
-fn open_game(path: String) {
+fn open_game(path: String, args: Vec<String>) {
     let exe_path = Path::new(&path);
 
     if !exe_path.exists() {
         return;
     }
 
-    let _ = Command::new(exe_path).spawn();
-}
-
-#[tauri::command]
-fn toggle_bepin(path: String) -> Result<String, String>{
-    let dll_path = Path::new(&path);
-    let disabled_path = dll_path.with_extension("disabled");
-
-    let (current, new_path) = if dll_path.exists() {
-        // If .dll exists → disable it
-        (dll_path, disabled_path)
-    } else if disabled_path.exists() {
-        // If .disabled exists → re-enable it
-        (disabled_path.as_path(), dll_path.with_extension("dll"))
-    } else {
-        return Err("Neither .dll nor .disabled file exists".into());
-    };
-
-    fs::rename(current, &new_path)
-        .map_err(|e| format!("Rename failed: {}", e))?;
-
-    Ok(new_path.to_string_lossy().to_string())
+    let _ = Command::new(exe_path).args(&args).spawn();
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_opener::init())
@@ -175,8 +155,7 @@ pub fn run() {
             download_command,
             delete_mod,
             extract_zip,
-            open_game,
-            toggle_bepin
+            open_game
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
