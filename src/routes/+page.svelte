@@ -16,7 +16,14 @@
     import FaPlayCircle from "svelte-icons/fa/FaPlayCircle.svelte";
     import FaRegPlayCircle from "svelte-icons/fa/FaRegPlayCircle.svelte";
 
-    import modData from "$lib/modlinks.json";
+    let modData: {
+        name: string;
+        author: string;
+        version: string;
+        file: string;
+        extractTo: string;
+        toDelete: string;
+    }[] = $state([]);
 
     const defaultConfig = {
         ss_path: "",
@@ -124,7 +131,10 @@
     }
 
     async function launchVanillaGame() {
-        invoke("open_game", { path: config.ss_path, args:["--doorstop-enabled", "false"] });
+        invoke("open_game", {
+            path: config.ss_path,
+            args: ["--doorstop-enabled", "false"],
+        });
     }
 
     onMount(async () => {
@@ -134,6 +144,10 @@
         await createDefaults();
 
         config = JSON.parse(await readTextFile(configFile));
+
+        modData = await fetch(
+            "https://raw.githubusercontent.com/GamingInfinite/Needle/refs/heads/main/src/lib/modlinks.json",
+        ).then((res) => res.json());
     });
 </script>
 
