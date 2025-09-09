@@ -1,6 +1,6 @@
 [package]
 name = "needle"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Tauri App"
 authors = ["you"]
 edition = "2021"
@@ -27,4 +27,3 @@ reqwest = { version = "0.12", features = ["blocking"] }
 zip = "0.6"
 tauri-plugin-dialog = "2"
 tokio = { version = "1.47.1", features = ["full"] }
-
