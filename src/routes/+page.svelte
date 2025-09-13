@@ -16,7 +16,7 @@
   import FaPlayCircle from "svelte-icons/fa/FaPlayCircle.svelte";
   import FaRegPlayCircle from "svelte-icons/fa/FaRegPlayCircle.svelte";
 
-  let modData: {
+  type ModData = {
     name: string;
     author: string;
     version: string;
@@ -24,7 +24,9 @@
     extractTo: string;
     toDelete: string;
     dependencies: string[];
-  }[] = $state([]);
+  };
+
+  let modData: ModData[] = $state([]);
 
   const defaultConfig = {
     ss_path: "",
@@ -119,9 +121,20 @@
     await invoke("delete_mod", { path: deletePath });
   }
 
-  async function modFileExists(mod: any): Promise<boolean> {
+  async function modFileExists(mod: ModData): Promise<boolean> {
     if (mod.toDelete) {
-      return await exists(`${ssPlugins}\\${mod.toDelete}`);
+      if (Array.isArray(mod.toDelete)) {
+        let modExists = true;
+        for (let i = 0; i < mod.toDelete.length; i++) {
+          let deletePath = mod.toDelete[i];
+          if (!(await exists(`${ssbp}\\${deletePath}`))) {
+            modExists = false;
+          }
+        }
+        return modExists;
+      } else {
+        return await exists(`${ssbp}\\${mod.toDelete}`);
+      }
     } else {
       return await exists(`${ssPlugins}\\${mod.file}`);
     }
