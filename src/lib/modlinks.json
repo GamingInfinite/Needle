@@ -5,7 +5,15 @@
         "version": "4.9.0",
         "file": "UnityExplorer.BepInEx5.Mono.zip",
         "extractTo": "BepInEx",
-        "toDelete": "sinai-dev-UnityExplorer"
+        "toDelete": "BepInEx\\plugins\\sinai-dev-UnityExplorer"
+    },
+    {
+        "name": "BepInEx.MonoMod.AutoHookGenPatcher",
+        "author": "Hamunii",
+        "version": "v1.0.7",
+        "file": "Hamunii-AutoHookGenPatcher-1.0.7.zip",
+        "extractTo": "",
+        "toDelete": ["BepInEx\\core\\MonoMod.dll", "BepInEx\\core\\MonoMod.RuntimeDetour.HookGen.dll", "BepInEx\\patchers\\BepInEx.MonoMod.AutoHookGenPatcher.dll"]
     },
     {
         "name": "BenchwarpSS",
@@ -25,7 +33,7 @@
         "version": "1.0.0",
         "file": "x753-FreeCompass-1.0.0.zip",
         "extractTo": "BepInEx\\plugins",
-        "toDelete": "FreeCompass.dll"
+        "toDelete": "BepInEx\\plugins\\FreeCompass.dll"
     },
     {
         "name": "Silksong_Skipintro",
@@ -33,6 +41,6 @@
         "version": "release",
         "file": "silksong_skip_intro.zip",
         "extractTo": "BepInEx\\plugins",
-        "toDelete": "skip_intro.dll"
+        "toDelete": "BepInEx\\plugins\\skip_intro.dll"
     }
 ]
