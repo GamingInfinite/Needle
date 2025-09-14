@@ -17,9 +17,15 @@
     },
     {
         "name": "BenchwarpSS",
-        "author": "GamingInfinite",
+        "author": "homothetyhk",
         "version": "1.0.1",
         "file": "BenchwarpSS.dll"
+    },
+    {
+        "name": "NoMoreGrinding",
+        "author": "GamingInfinite",
+        "version": "1.0",
+        "file": "NoMoreGrinding.dll"
     },
     {
         "name": "SilklessCoop",
