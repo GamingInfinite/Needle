@@ -48,5 +48,13 @@
         "file": "silksong_skip_intro.zip",
         "extractTo": "BepInEx\\plugins",
         "toDelete": "BepInEx\\plugins\\skip_intro.dll"
+    },
+    {
+        "name": "Silksong.LostSinner",
+        "author": "jngo102",
+        "version": "0.4.0",
+        "file": "LostSinner.zip",
+        "extractTo": "BepInEx\\plugins",
+        "toDelete": "BepInEx\\plugins\\LostSinner.dll"
     }
 ]
